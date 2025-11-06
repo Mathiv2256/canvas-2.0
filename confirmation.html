@@ -1,0 +1,32 @@
+<!-- confirmation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registration Confirmed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-md mx-auto bg-white p-6 rounded shadow-lg text-center">
+    <h2 class="text-2xl font-bold text-green-600 mb-4">🎉 Registration Confirmed!</h2>
+    <div id="confirmationDetails" class="text-gray-700"></div>
+    <a href="index.html" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Back to Seminars</a>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('registration'));
+    const container = document.getElementById('confirmationDetails');
+
+    if (data) {
+      container.innerHTML = `
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Seminar:</strong> ${data.seminar}</p>
+        <p><strong>Date:</strong> ${data.date}</p>
+      `;
+    } else {
+      container.innerHTML = "<p>No registration data found.</p>";
+    }
+  </script>
+</body>
+</html>
